@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -9,11 +8,16 @@ namespace seniorOne
     {
         static void Main(string[] args)
         {
+            mainMenu();
+        }
+
+        static void mainMenu()
+        {
             Console.WriteLine("Chose Your Task");
-            Console.WriteLine("1: Case Conversion\n2: Reverse String\n3: Increment Digits");
+            Console.WriteLine("1: Case Conversion\n2: Reverse String\n3: Increment Digits\nQ: Quit");
             string input = Console.ReadLine();
 
-            switch(input)
+            switch (input)
             {
                 case "1":
                     caseConvert();
@@ -25,6 +29,11 @@ namespace seniorOne
 
                 case "3":
                     plusDigit();
+                    break;
+
+                case "q":
+                case "Q":
+                    Environment.Exit(0);
                     break;
 
                 default:
@@ -56,6 +65,17 @@ namespace seniorOne
 
                 }
             }
+
+            Console.WriteLine("\nWould you like to go again? Y/ANY");
+            string repeat = Console.ReadLine();
+
+            if (repeat.ToUpper() == "Y")
+            {
+                caseConvert();
+            } else
+            {
+                mainMenu();
+            }
         }
 
         static void backString()
@@ -73,6 +93,18 @@ namespace seniorOne
             char[] theArray = forString.ToCharArray();
             Array.Reverse(theArray);
             Console.WriteLine(new string(theArray));
+
+            Console.WriteLine("Would you like to go again? Y/ANY");
+            string repeat = Console.ReadLine();
+
+            if (repeat.ToUpper() == "Y")
+            {
+                backString();
+            }
+            else
+            {
+                mainMenu();
+            }
         }
 
         static void plusDigit()
@@ -98,6 +130,18 @@ namespace seniorOne
                 }
 
                 Console.Write(newNum);
+            }
+
+            Console.WriteLine("Would you like to go again? Y/ANY");
+            string repeat = Console.ReadLine();
+
+            if (repeat.ToUpper() == "Y")
+            {
+                plusDigit();
+            }
+            else
+            {
+                mainMenu();
             }
         }
     }
